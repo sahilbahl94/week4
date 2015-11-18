@@ -1,0 +1,62 @@
+<h3>
+	Product Title:
+</h3>
+
+<div>
+	<%= @product.title %>	
+</div>
+
+<h3>
+	Product Description:
+</h3>
+
+<div>
+	<%= @product.description %>	
+</div>
+
+<h3>
+	Product Deadline:
+</h3>
+
+<div>
+	<%= @product.deadline %>	
+</div>
+
+
+<% if flash[:alert].present? %>
+	<p> <%= flash[:alert] %> </p>
+<% end %>
+
+
+<h3>Current Bids</h3>
+
+<div>
+	<% @bids.each do |bid| %>
+		<p>
+			User: <%= User.find_by(id: bid.user_id).name %>
+		</p>
+		<p>Amount: $<%= bid.amount %></p>
+		<p>Created at: <%= bid.created_at %></p>
+		<br>
+		<% end %>
+</div>
+
+<h3> Wanna bid?</h3>
+
+
+<%= form_for [@user, @product, @bid] do |f| %>
+	<div>
+	<%= f.label :email %>	
+	<%= f.text_field :email %>
+	</div>
+
+	<div>
+	<%= f.label :amount %>	
+	<%= f.number_field :amount %>
+	</div>
+
+	<div>
+	<%= f.submit "Submit Bid" %>
+	<div>
+<% end %>
+

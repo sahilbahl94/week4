@@ -1,0 +1,19 @@
+<h3>Welcome to your profile page <%= @user.name %></h3>
+
+<h3>Email Address:</h3>
+
+<div>
+	<%= @user.email %>
+</div>
+<br><br><br>
+<div>
+	<%= link_to("Add a new product", new_user_product_path(@user.id)) %>
+</div>
+<br><br><br>
+<div>
+	<%= link_to("View Your Products", user_products_path(@user.id)) %>
+</div>
+
+<div>
+	<%= link_to("View All Products", products_all_path) %>
+</div>

@@ -1,0 +1,8 @@
+<h3>Product list for <%= @user.name %> </h3>
+<ul>
+<% @products.each do |product| %>
+	<li>
+	<%= link_to("#{product.title}", user_product_path(@user.id, product.id)) %>
+	</li>
+	<% end %>
+</ul>
